@@ -91,13 +91,14 @@ function checkoutDevice(ledger, assetTag, borrower) {
 }
 
 function checkinDevice(ledger, assetTag) {
-  if (!ledger[assetTag]) {
+  const equipment = ledger[assetTag];
+  if (!equipment) {
     return {
       ledger: ledger,
       message: assetTag + " not found.",
     };
   }
-  if (ledger[assetTag].status == "CheckedIn") {
+  if (equipment.status == "CheckedIn") {
     return {
       ledger: ledger,
       message: assetTag + " already checked in.",
