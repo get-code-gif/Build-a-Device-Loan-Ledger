@@ -90,7 +90,36 @@ function checkoutDevice(ledger, assetTag, borrower) {
   }
 }
 
-function checkinDevice() {}
+function checkinDevice(ledger, assetTag) {
+  if (!ledger[assetTag]) {
+    return {
+      ledger: ledger,
+      message: assetTag + " not found.",
+    };
+  }
+  if (ledger[assetTag].status == "CheckedIn") {
+    return {
+      ledger: ledger,
+      message: assetTag + " already checked in.",
+    };
+  } else {
+    let updatedLedger = {};
+    updatedLedger = loadLedger(serializeLedger(ledger));
+    updatedLedger[assetTag].borrower.name = "";
+    updatedLedger[assetTag].borrower.email = "";
+    updatedLedger[assetTag].status = "CheckedIn";
+    let updateObject = {
+      ledger: updatedLedger,
+      message:
+        "Ledger asset " +
+        assetTag +
+        " has been updated for " +
+        borrower.name +
+        ".",
+    };
+    return updateObject;
+  }
+}
 
 function serializeLedger(ledger) {
   return JSON.stringify(ledger);
