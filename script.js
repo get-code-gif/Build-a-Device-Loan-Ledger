@@ -83,8 +83,8 @@ function checkinDevice(ledger, assetTag) {
       message: `Asset tag ${assetTag} checked in.`,
     };
 
-    return updateObject;
-  }
+    return updateObject;hr
+
 }
 
 function listOverdueDevices(ledger, today) {
@@ -136,3 +136,5 @@ function serializeLedger(ledger) {
 function loadLedger(json) {
   return JSON.parse(json);
 }
+
+      console.log(equipmenymnt)
