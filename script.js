@@ -83,8 +83,8 @@ function checkinDevice(ledger, assetTag) {
       message: `Asset tag ${assetTag} checked in.`,
     };
 
-    return updateObject;hr
-
+    return updateObject;
+  }
 }
 
 function listOverdueDevices(ledger, today) {
@@ -94,13 +94,28 @@ function listOverdueDevices(ledger, today) {
 
     const [month, day, year] = parts.map(Number);
     const isLeapYear = year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);
-    const daysInMonth = [31, isLeapYear ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    const daysInMonth = [
+      31,
+      isLeapYear ? 29 : 28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31,
+    ];
     if (
       !Number.isInteger(month) ||
       !Number.isInteger(day) ||
       !Number.isInteger(year) ||
-      month < 1 || month > 12 ||
-      day < 1 || day > daysInMonth[month - 1] ||
+      month < 1 ||
+      month > 12 ||
+      day < 1 ||
+      day > daysInMonth[month - 1] ||
       year < 1
     ) {
       return null;
@@ -136,5 +151,3 @@ function serializeLedger(ledger) {
 function loadLedger(json) {
   return JSON.parse(json);
 }
-
-      console.log(equipmenymnt)
