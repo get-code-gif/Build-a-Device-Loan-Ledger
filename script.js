@@ -170,3 +170,22 @@ function getInstructorByEmail(email) {
 console.log(getInstructorByEmail("fatima@example.com"));
 console.log(getInstructorByEmail("alejandro@example.com"));
 console.log(getInstructorByEmail("sofia@example.com"));
+
+function getInstructorByName(name) {
+  for (const dept in rawData) {
+    const programs = rawData[dept].programs;
+
+    for (const program of programs) {
+      for (const instructor of program["instructors"]) {
+        if (instructor.name === name) {
+          return instructor.email;
+        }
+      }
+    }
+  }
+  return null;
+}
+
+console.log(getInstructorByName("Fatima Al-Mansoori"));
+console.log(getInstructorByName("Alejandro Ramirez"));
+console.log(getInstructorByName("Sofia Petrova"));
